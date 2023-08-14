@@ -16,12 +16,19 @@ const initialState = [
 const postsSlice = createSlice({
   name: "posts",
   initialState,
-  reducers: {},
+  reducers: {
+    postAdded(state, action) {
+      state.push(action.payload);
+      //acctually your are not mutating state it's happening because of immer js
+    },
+  },
 });
 
 console.log("postSlice ==>", postsSlice);
 
 export const selectAllPosts = (state) => state.posts;
 console.log("state ==>", selectAllPosts);
+
+export const { postAdded } = postsSlice.actions;
 
 export default postsSlice.reducer;
